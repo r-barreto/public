@@ -1,0 +1,16 @@
+AWSTemplateFormatVersion: 2010-09-09
+Transform: AWS::Serverless-2016-10-31
+Description: SAM Template for Deploy Python code to Lambda
+Parameters:
+  Name:
+    Type: String
+Resources:
+  LambdaFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: !Ref Name
+      CodeUri: /tmp/output.zip
+      Handler: main.lambda_handler
+      Runtime: python3.7
+      MemorySize: 128
+      Timeout: 30 # seconds, 900 max
